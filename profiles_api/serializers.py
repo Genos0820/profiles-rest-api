@@ -46,3 +46,14 @@ class UserProfileSerializer(serializers.Serializer):
         style={'input_type': 'password', 'placeholder': 'Password'}
     )
 '''
+
+class ProfileFeedSerializer(serializers.ModelSerializer):
+    """Serailizes profile feed items"""
+    class Meta:
+        model = models.ProfileFeedItem
+        fields=('id','user_profile','status_text','created_on')
+        extra_kwargs={
+            'user_profile':{'read_only':True}
+        }
+        
+
